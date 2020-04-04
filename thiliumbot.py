@@ -1,4 +1,5 @@
 import discord
+import command_handlers as commands
 from secrets import token
 
 client = discord.Client()
@@ -9,12 +10,18 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    print('Message received:\n{}'.format(message.content))
+    
     if message.author == client.user:
         return
+    else:
+        print('Message received:\n{}'.format(message.content))
 
     if message.content.startswith('$test'):
-        await message.channel.send('Test')
+        response = commands.test(message)
+        await message.channel.send(response)
 
+    if message.content.startswith('$lotto'):
+        response = commands.lotto(message)
+        await message.channel.send(response)
 
 client.run(token)
