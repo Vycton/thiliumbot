@@ -1,15 +1,19 @@
 import random
 import itertools
 
-# Any command starting with $ will execute its corresponding function here
+# Any command starting with $ will execute its corresponding function here.
 
+# Simply return a test message.
 def test(message):
     return 'Test'
 
+# Take any number of arguments and return one of them randomly.
 def lotto(message):
     options = message.content.split()[1:]
     return random.choice(options)
 
+# First argument specifies number of teams. Other arguments are player names.
+# Players are then randomly divided over equally large teams.
 def teams(message):
     num_teams = int(message.content.split()[1])
     options = message.content.split()[2:]
