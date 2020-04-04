@@ -23,5 +23,9 @@ async def on_message(message):
     if message.content.startswith('$lotto'):
         response = commands.lotto(message)
         await message.channel.send(response)
+        
+    if message.content.startswith('$teams'):
+        response = commands.teams(message)
+        await message.channel.send(response)
 
 client.run(token)
